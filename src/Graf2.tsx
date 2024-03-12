@@ -1,14 +1,20 @@
+import { useEffect } from 'react';
 import Highcharts from 'highcharts';
 import {
     HighchartsProvider, HighchartsChart, Chart, Legend, XAxis, YAxis, BarSeries, Tooltip
 } from 'react-jsx-highcharts';
-
+import { usePostMessageWithHeight } from "./hooks/usePostHeightMessage";
 
 
 export default function Graf2() {
+    const { containerRef, postHeightMessage } = usePostMessageWithHeight(`desegregace-graf-2`);
+
+    useEffect(() => {
+        postHeightMessage();
+    }, []);
 
     return (
-        <div className="max-w-[620px] mx-auto">
+        <div ref={containerRef} className="max-w-[620px] mx-auto">
             <h1 className="text-xl font-bold mb-1">Na 129 základních školách je Romů víc než třetina...</h1>
             <h2 className="mb-3">Údaje za školní rok 2021/22</h2>
 

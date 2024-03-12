@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import Highcharts from 'highcharts';
 import SeriesLabel from 'highcharts/modules/series-label';
 import {
   HighchartsProvider, HighchartsChart, XAxis, YAxis, LineSeries, Tooltip
 } from 'react-jsx-highcharts';
+import { usePostMessageWithHeight } from "./hooks/usePostHeightMessage";
+
 
 const plotOptions = {
   series: {
@@ -13,9 +16,15 @@ const plotOptions = {
 SeriesLabel(Highcharts);
 
 export default function Graf1() {
+  const { containerRef, postHeightMessage } = usePostMessageWithHeight(`desegregace-graf-1`);
+
+  useEffect(() => {
+    postHeightMessage();
+  }, []);
+
 
   return (
-    <div className="max-w-[620px] mx-auto">
+    <div ref={containerRef} className="max-w-[620px] mx-auto">
       <h1 className="text-xl font-bold mb-1">Podíl romských žáků</h1>
       <h2 className="mb-3">V základních, mateřských i středních školách je od roku 2017 víceméně stabilní.</h2>
 

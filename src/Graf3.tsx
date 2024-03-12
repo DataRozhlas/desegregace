@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import Highcharts from 'highcharts';
 import addHighchartsMore from 'highcharts/highcharts-more';
 import {
     HighchartsProvider, HighchartsChart, Chart, Legend, XAxis, YAxis, BubbleSeries, Tooltip
 } from 'react-jsx-highcharts';
+import { usePostMessageWithHeight } from "./hooks/usePostHeightMessage";
+
 
 addHighchartsMore(Highcharts);
 
@@ -31,9 +34,14 @@ const sklonujY = (n: number | undefined) => {
 
 
 export default function Graf3() {
+    const { containerRef, postHeightMessage } = usePostMessageWithHeight(`desegregace-graf-3`);
+
+    useEffect(() => {
+        postHeightMessage();
+    }, []);
 
     return (
-        <div className="max-w-[620px] mx-auto">
+        <div ref={containerRef} className="max-w-[620px] mx-auto">
             <h1 className="text-xl font-bold mb-1">Velcí i malí</h1>
             <h2 className="mb-3">V ČR je 27 zřizovatelů, kteří mají jen jednu školu – a ta je segregovaná. Ale také např. 16 velkých zřizovatelů se šesti či více školami, z nichž jen jedna je segregovaná.</h2>
 
