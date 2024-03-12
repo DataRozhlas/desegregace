@@ -16,9 +16,8 @@ export default function Graf1() {
 
   return (
     <div className="max-w-[620px] mx-auto">
-      <h1 className="text-xl font-bold mb-1">Když nemusíš, nechoď</h1>
-      <h2 className="mb-3">Podíl romských žáků na základních školách, pro které platí povinná školní docházka,
-        je téměř dvojnásobný ve srovnání s mateřskými a středními školami.</h2>
+      <h1 className="text-xl font-bold mb-1">Podíl romských žáků</h1>
+      <h2 className="mb-3">V základních, mateřských i středních školách je od roku 2017 víceméně stabilní.</h2>
 
       <HighchartsProvider Highcharts={Highcharts}>
 
